@@ -1,5 +1,7 @@
 #!/bin/bash
 
+. ./venv/bin/activate
+
 network=mb2-ssd-lite
 f_pth=models/mb2-ssd-lite-mp-0_686.pth
 f_label=models/voc-model-labels.txt

@@ -279,3 +279,14 @@ python eval_ssd.py --net vgg16-ssd  --dataset ~/data/VOC0712/test/VOC2007/ --tra
 
 1. Resnet34 Based Model.
 2. BatchNorm Fusion.
+
+## ONNX and Default box file Exporting
+
+### Setup python3.9 venv
+```bash
+setup_venv.sh
+```
+### Run onnx export script
+```bash
+run_onnx_export_test.sh
+```
