@@ -282,9 +282,13 @@ python eval_ssd.py --net vgg16-ssd  --dataset ~/data/VOC0712/test/VOC2007/ --tra
 
 ## ONNX and Default box file Exporting w/ mb2-ssd-lite
 Python packages installation is requried before running of mb2-ssd-lite.onnx and mb2-ssd-lite.anchor file export script.
+Follow the below steps.
+1. Download models
+2. Setup python3.9 venv
+3. Run onnx export script
 
 ### Download models
-**Please download the models and put them into the folder "./models". The following sections will need them.** URL: https://drive.google.com/drive/folders/1pKn-RifvJGWiOx0ZCRLtCXM5GT5lAluu?usp=sharing
+Please download the models and put them into the folder "./models". The following sections will need them.** URL: https://drive.google.com/drive/folders/1pKn-RifvJGWiOx0ZCRLtCXM5GT5lAluu?usp=sharing
 
 ### Setup python3.9 venv
 ```bash
