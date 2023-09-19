@@ -43,8 +43,30 @@ init_net_txt_path = f"models/{net_type}_init_net.pbtxt"
 predict_net_path = f"models/{net_type}_predict_net.pb"
 predict_net_txt_path = f"models/{net_type}_predict_net.pbtxt"
 
+# onnx file exporting
 dummy_input = torch.randn(1, 3, 300, 300)
 torch.onnx.export(net, dummy_input, model_path, verbose=False, output_names=['scores', 'boxes'])
+
+def_filename=f"models/{net_type}.anchor"
+# default box file exporting
+from ctypes import c_ubyte
+
+def to_bytes(tensor):
+    tensor = tensor * 256.
+    tensor = tensor.round().clamp(0., 255.).view(-1).int().tolist()
+    t = c_ubyte * len(tensor)
+    buf = t()
+    for k, v in enumerate(tensor):
+        buf[k] = v
+    return buf
+
+#for i, prior in enumerate(net.config.priors[0:10]):
+#    print("{:4d}: {}".format(i, prior))
+
+anchor = net.config.priors
+
+with open(def_filename, 'wb') as f:
+    f.write(to_bytes(anchor))
 
 # model = onnx.load(model_path)
 # init_net, predict_net = c2.onnx_graph_to_caffe2_net(model)
